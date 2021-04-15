@@ -1,5 +1,5 @@
 /**
- *  'user' entity (registry)
+ *  Main registry for user entities.
  */
 class Fl32_Ap_User_Back_Store_RDb_Schema_User {
     date_created;
