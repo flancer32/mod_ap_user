@@ -24,7 +24,7 @@ module.exports = {
     'rules': {
         'camelcase': [
             'warn',
-            {'properties': 'never', ignoreDestructuring: true, allow: ['^Vendor_Plugin_']}
+            {'properties': 'never', ignoreDestructuring: true, allow: ['^Fl32_Ap_User_']}
         ],
         'indent': [
             'error',

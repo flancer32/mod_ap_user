@@ -1,3 +1,3 @@
-# `/pub/` folder
+# `/web/` folder
 
-Client side startup files are placed here.
+Client side static files are placed here.

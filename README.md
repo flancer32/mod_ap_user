@@ -1,3 +1,3 @@
-# teqfw-mod-sample
+# @flancer32/mod_ap_user
 
-This is sample module for TeqFW application.
+User management module for AP project.

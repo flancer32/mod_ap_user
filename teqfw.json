@@ -1,6 +1,6 @@
 {
   "autoload": {
-    "ns": "Vendor_Plugin",
+    "ns": "Fl32_Ap_User",
     "path": "./src"
   }
 }

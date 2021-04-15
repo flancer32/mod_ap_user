@@ -1,10 +1,14 @@
 {
-  "name": "@venodr/plugin",
+  "name": "@flancer32/mod_ap_user",
   "version": "0.1.0",
-  "description": "Sample plugin for TeqFW based application.",
+  "description": "User management module for AP project.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "AGPL-3.0-only",
-  "dependencies": {}
+  "dependencies": {
+    "@teqfw/http2": "github:teqfw/http2",
+    "@teqfw/ui-quasar": "github:teqfw/ui-quasar",
+    "bcrypt": "*"
+  }
 }
