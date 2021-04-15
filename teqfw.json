@@ -1,0 +1,6 @@
+{
+  "autoload": {
+    "ns": "Vendor_Plugin",
+    "path": "./src"
+  }
+}
