@@ -23,6 +23,8 @@ async function Factory(spec) {
     // EXTRACT DEPS
     /** @type {TeqFw_Core_App_Db_Connector} */
     const connector = spec['TeqFw_Core_App_Db_Connector$']; // instance singleton
+    /** @type {typeof TeqFw_Http2_Back_Server_Stream_Report} */
+    const Report = spec['TeqFw_Http2_Back_Server_Stream#Report'];   // class
 
     // PARSE INPUT & DEFINE WORKING VARS
 
