@@ -2,5 +2,18 @@
   "autoload": {
     "ns": "Fl32_Ap_User",
     "path": "./src"
+  },
+  "http2": {
+    "handlers": [
+      {
+        "depId": "Fl32_Ap_User_Plugin_Http2_Handler_Session$",
+        "before": [
+          "TeqFw_Http2_Plugin_Handler_Service",
+          "TeqFw_Http2_Plugin_Handler_Static"
+        ],
+        "after": [],
+        "weight": 1000
+      }
+    ]
   }
 }
