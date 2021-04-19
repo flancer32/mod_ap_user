@@ -5,7 +5,7 @@ class Fl32_Ap_User_Defaults {
     BACK_REALM = 'user';  // realm for API services ('/api/user/...') and CLI commands ('user-...')
 
     // DI container labels for objects used by this plugin
-    DI_OBJ = 'pluginObject';
+    DI_SESSION = 'userSession';
 
     // DEF-objects of the dependencies.
     /** @type {TeqFw_Core_App_Defaults} */
