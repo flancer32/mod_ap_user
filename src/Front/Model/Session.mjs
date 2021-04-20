@@ -9,12 +9,12 @@ const NS = 'Fl32_Ap_User_Front_Model_Session';
 // MODULE'S CLASSES
 class Fl32_Ap_User_Front_Model_Session {
     constructor(spec) {
-        // /** @type {Fl32_Teq_User_Front_Gate_Current.gate} */
-        // const gateCurrent = spec['Fl32_Teq_User_Front_Gate_Current$']; // function singleton
+        /** @type {Fl32_Ap_User_Front_Gate_Session_Current.gate} */
+        const gateCurrent = spec['Fl32_Ap_User_Front_Gate_Session_Current$']; // function singleton
         // /** @type {Fl32_Teq_User_Front_Gate_Sign_Out.gate} */
         // const gateSignOut = spec['Fl32_Teq_User_Front_Gate_Sign_Out$']; // function singleton
-        // /** @type {typeof Fl32_Teq_User_Shared_Service_Route_Current_Request} */
-        // const CurrentRequest = spec['Fl32_Teq_User_Shared_Service_Route_Current#Request']; // class
+        /** @type {typeof Fl32_Ap_User_Shared_Service_Route_Session_Current.Request} */
+        const CurrentRequest = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Request']; // class
         // /** @type {typeof Fl32_Teq_User_Shared_Service_Route_Sign_Out_Request} */
         // const SignOutRequest = spec['Fl32_Teq_User_Shared_Service_Route_Sign_Out#Request']; // class
         // /** @type {typeof Fl32_Teq_User_Shared_Api_Data_User} */
@@ -52,12 +52,12 @@ class Fl32_Ap_User_Front_Model_Session {
         };
 
         this.init = async function () {
-            // const req = new CurrentRequest();
-            // /** @type {Fl32_Teq_User_Shared_Service_Route_Current_Response} */
-            // const res = await gateCurrent(req);
-            // if (res.user) {
-            //     user = Object.assign(new DUser(), res.user);
-            // }
+            const req = new CurrentRequest();
+            /** @type {Fl32_Ap_User_Shared_Service_Route_Session_Current.Response} */
+            const res = await gateCurrent(req);
+            if (res.user) {
+                user = Object.assign(new DUser(), res.user);
+            }
         };
 
         /**

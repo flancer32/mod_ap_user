@@ -7,12 +7,14 @@ class Fl32_Ap_User_Defaults {
     // DI container labels for objects used by this plugin
     DI_SESSION = 'userSession';
 
+    HTTP_SHARED_CTX_USER = 'user.data';
+
     // DEF-objects of the dependencies.
     /** @type {TeqFw_Core_App_Defaults} */
     MOD_CORE;
 
     // SERVICES ROUTES
-    SERV_GROUP_LIST = '/group/list'; // service at '/api/plugin/group/list' route
+    SERV_SESS_CURRENT = '/session/current';
 
     constructor(spec) {
         this.MOD_CORE = spec['TeqFw_Core_App_Defaults$']; // instance singleton
