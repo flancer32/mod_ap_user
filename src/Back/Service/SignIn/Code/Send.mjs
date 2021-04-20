@@ -7,7 +7,7 @@
 const NS = 'Fl32_Ap_User_Back_Service_SignIn_Code_Send';
 
 /**
- * Service to remove weight stats data for the user.
+ * Service to send one-time sign-in code to user email.
  * @implements TeqFw_Http2_Api_Service_Factory
  */
 class Fl32_Ap_User_Back_Service_SignIn_Code_Send {
@@ -32,8 +32,6 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Send {
         const procCreate = spec['Fl32_Ap_User_Back_Process_SignIn_Code_Create$']; // function singleton
         /** @function {@type Fl32_Ap_User_Back_Process_SignIn_Code_Email.process} */
         const procEmail = spec['Fl32_Ap_User_Back_Process_SignIn_Code_Email$']; // function singleton
-
-        // DEFINE INNER FUNCTIONS
 
         // DEFINE INSTANCE METHODS
 

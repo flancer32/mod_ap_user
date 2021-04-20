@@ -46,7 +46,7 @@ async function Factory(spec) {
             let result = null;
             if (headers[H2.HTTP2_HEADER_COOKIE]) {
                 const cookies = headers[H2.HTTP2_HEADER_COOKIE];
-                const name = DEF.SESSION_COOKIE_NAME;
+                const name = DEF.DATA_SESS_COOKIE_NAME;
                 const value = cookies.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '';
                 if (value.length) {
                     // there is session cookie in HTTP request
@@ -110,7 +110,7 @@ async function Factory(spec) {
                     // clear session id from cookies
                     const addr = regRealms.parseAddress(path);
                     const realm = addr.realm ?? '';
-                    result.headers[H2.HTTP2_HEADER_SET_COOKIE] = utilCookie.clear(DEF.SESSION_COOKIE_NAME, realm);
+                    result.headers[H2.HTTP2_HEADER_SET_COOKIE] = utilCookie.clear(DEF.DATA_SESS_COOKIE_NAME, realm);
                     result.headers[H2.HTTP2_HEADER_STATUS] = H2.HTTP_STATUS_UNAUTHORIZED;
                     result.complete = true;
                 }
