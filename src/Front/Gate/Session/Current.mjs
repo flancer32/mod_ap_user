@@ -25,7 +25,7 @@ function Factory(spec) {
      */
     async function gate(data) {
         let result = false;
-        const res = await backConnect.send(data, DEF.BACK_REALM, DEF.SERV_SESS_CURRENT);
+        const res = await backConnect.send(data, DEF.BACK_REALM, DEF.SERV_session_current);
         if (res) {
             result = Object.assign(new Response(), res);
         }

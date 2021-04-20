@@ -14,17 +14,17 @@ const NS = 'Fl32_Ap_User_Back_Service_Session_Current';
 class Fl32_Ap_User_Back_Service_Session_Current {
 
     constructor(spec) {
-        // PARSE INPUT, INIT PROPS, DEFINE WORKING VARS
+        // EXTRACT DEPS
         /** @type {Fl32_Ap_User_Defaults} */
         const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class constructor
+        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
         /** @type {typeof Fl32_Ap_User_Shared_Service_Route_Session_Current.Response} */
         const Response = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Response']; // ES6 module
 
         // DEFINE INSTANCE METHODS
 
-        this.getRoute = () => DEF.SERV_SESS_CURRENT;
+        this.getRoute = () => DEF.SERV_session_current;
 
         // does not used with empty request
         // this.createInputParser = function () {};
