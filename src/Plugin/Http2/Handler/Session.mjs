@@ -21,10 +21,18 @@ const NS = 'Fl32_Ap_User_Plugin_Http2_Handler_Session';
  */
 async function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_User_Defaults} */
+    const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
     /** @type {TeqFw_Core_App_Db_Connector} */
-    const connector = spec['TeqFw_Core_App_Db_Connector$']; // instance singleton
+    const rdb = spec['TeqFw_Core_App_Db_Connector$']; // instance singleton
+    /** @type {Fl32_Ap_User_Back_Model_Cache_Session} */
+    const cache = spec['Fl32_Ap_User_Back_Model_Cache_Session$']; // instance singleton
     /** @type {typeof TeqFw_Http2_Back_Server_Stream_Report} */
     const Report = spec['TeqFw_Http2_Back_Server_Stream#Report'];   // class
+    /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
+    const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#'];   // class
+    /** @function {@type Fl32_Ap_User_Back_Process_User_Load.process} */
+    const procLoad = spec['Fl32_Ap_User_Back_Process_User_Load$']; // function singleton
 
     // PARSE INPUT & DEFINE WORKING VARS
 
@@ -73,9 +81,9 @@ async function Factory(spec) {
 
             async function getSessionById(trx, sessId) {
                 let result = null;
-                const query = trx.from(EAuthSess.ENTITY);
-                query.select([EAuthSess.A_DATE_CREATED, EAuthSess.A_SESSION_ID, EAuthSess.A_USER_REF]);
-                query.where(EAuthSess.A_SESSION_ID, sessId);
+                const query = trx.from(ESession.ENTITY);
+                query.select([ESession.A_DATE_CREATED, ESession.A_SESSION_ID, ESession.A_USER_REF]);
+                query.where(ESession.A_SESSION_ID, sessId);
                 const rows = await query;
                 if (rows.length) {
                     result = rows[0];
@@ -89,10 +97,10 @@ async function Factory(spec) {
             try {
                 const sess = await getSessionById(trx, sessId);
                 if (sess) {
-                    const userId = sess[EAuthSess.A_USER_REF];
-                    const dateInit = sess[EAuthSess.A_DATE_CREATED];
+                    const userId = sess[ESession.A_USER_REF];
+                    const dateInit = sess[ESession.A_DATE_CREATED];
                     if (userId) {
-                        /** @type {Fl32_Teq_User_Shared_Api_Data_User} */
+                        /** @type {Fl32_Ap_User_Shared_Service_Data_User} */
                         const user = await procLoad({trx, userId});
                         user.dateLoggedIn = dateInit;
                         // get parent data
@@ -102,8 +110,8 @@ async function Factory(spec) {
                         } else {
                             user.parentName = user.name;
                         }
-                        report.sharedAdditional[DEF.HTTP_SHARE_CTX_USER] = user;
-                        report.sharedAdditional[DEF.HTTP_SHARE_CTX_SESSION_ID] = sessId;
+                        report.sharedAdditional[DEF.HTTP_SHARED_CTX_USER] = user;
+                        report.sharedAdditional[DEF.HTTP_SHARED_CTX_SESSION_ID] = sessId;
                         cache.set(sessId, user);
                     }
                 } else {
@@ -131,8 +139,8 @@ async function Factory(spec) {
             if (sessId) {
                 const userCached = cache.get(sessId);
                 if (userCached) {
-                    result.sharedAdditional[DEF.HTTP_SHARE_CTX_USER] = userCached;
-                    result.sharedAdditional[DEF.HTTP_SHARE_CTX_SESSION_ID] = sessId;
+                    result.sharedAdditional[DEF.HTTP_SHARED_CTX_USER] = userCached;
+                    result.sharedAdditional[DEF.HTTP_SHARED_CTX_SESSION_ID] = sessId;
                 } else {
                     const path = headers[H2.HTTP2_HEADER_PATH];
                     await loadUserData(sessId, path, result);

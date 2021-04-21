@@ -17,10 +17,10 @@ class Fl32_Ap_User_Front_Model_Session {
         const CurrentRequest = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Request']; // class
         // /** @type {typeof Fl32_Teq_User_Shared_Service_Route_Sign_Out_Request} */
         // const SignOutRequest = spec['Fl32_Teq_User_Shared_Service_Route_Sign_Out#Request']; // class
-        // /** @type {typeof Fl32_Teq_User_Shared_Api_Data_User} */
-        // const DUser = spec['Fl32_Teq_User_Shared_Api_Data_User#']; // class
+        /** @type {typeof Fl32_Ap_User_Shared_Service_Data_User} */
+        const DUser = spec['Fl32_Ap_User_Shared_Service_Data_User#']; // class
 
-        /** @type {Fl32_Teq_User_Shared_Api_Data_User} */
+        /** @type {Fl32_Ap_User_Shared_Service_Data_User} */
         let user = null;
         /** @type {String} route to redirect after authentication  */
         let routeToRedirect = null;
@@ -45,7 +45,7 @@ class Fl32_Ap_User_Front_Model_Session {
         };
 
         /**
-         * @returns {Fl32_Teq_User_Shared_Api_Data_User}
+         * @returns {Fl32_Ap_User_Shared_Service_Data_User}
          */
         this.getUser = function () {
             return user;
