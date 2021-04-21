@@ -27,6 +27,10 @@ async function Factory(spec) {
     const rdb = spec['TeqFw_Core_App_Db_Connector$']; // instance singleton
     /** @type {Fl32_Ap_User_Back_Model_Cache_Session} */
     const cache = spec['Fl32_Ap_User_Back_Model_Cache_Session$']; // instance singleton
+    /** @function {@type TeqFw_Http2_Back_Util.cookieClear} */
+    const cookieClear = spec['TeqFw_Http2_Back_Util#cookieClear']; // function singleton
+    /** @type {TeqFw_Http2_Back_Realm_Registry} */
+    const regRealms = spec['TeqFw_Http2_Back_Realm_Registry$']; // instance singleton
     /** @type {typeof TeqFw_Http2_Back_Server_Stream_Report} */
     const Report = spec['TeqFw_Http2_Back_Server_Stream#Report'];   // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
@@ -79,6 +83,13 @@ async function Factory(spec) {
         async function loadUserData(sessId, path, report) {
             // DEFINE INNER FUNCTIONS
 
+            async function cleanUpSessions(trx, userId, sessId) {
+                return await trx.from(ESession.ENTITY)
+                    .where(ESession.A_USER_REF, '=', userId)
+                    .where(ESession.A_SESSION_ID, '<>', sessId)
+                    .del();
+            }
+
             async function getSessionById(trx, sessId) {
                 let result = null;
                 const query = trx.from(ESession.ENTITY);
@@ -110,17 +121,30 @@ async function Factory(spec) {
                         } else {
                             user.parentName = user.name;
                         }
+                        // place user data into request shared context
                         report.sharedAdditional[DEF.HTTP_SHARED_CTX_USER] = user;
-                        report.sharedAdditional[DEF.HTTP_SHARED_CTX_SESSION_ID] = sessId;
+                        // report.sharedAdditional[DEF.HTTP_SHARED_CTX_SESSION_ID] = sessId;
                         cache.set(sessId, user);
+                        // clean up other sessions for the user
+                        await cleanUpSessions(trx, userId, sessId);
                     }
                 } else {
                     // clear session id from cookies
                     const addr = regRealms.parseAddress(path);
                     const realm = addr.realm ?? '';
-                    result.headers[H2.HTTP2_HEADER_SET_COOKIE] = utilCookie.clear(DEF.DATA_SESS_COOKIE_NAME, realm);
+                    result.headers[H2.HTTP2_HEADER_SET_COOKIE] = cookieClear({name: DEF.DATA_SESS_COOKIE_NAME, realm});
                     result.headers[H2.HTTP2_HEADER_STATUS] = H2.HTTP_STATUS_UNAUTHORIZED;
+                    result.output = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Please, sign in.</title>
+    <meta http-equiv="refresh" content="0; URL=/"/>
+</head>
+</html>                  
+`;
                     result.complete = true;
+                    cache.delete(sessId);
                 }
                 await trx.commit();
             } catch (e) {
@@ -140,7 +164,7 @@ async function Factory(spec) {
                 const userCached = cache.get(sessId);
                 if (userCached) {
                     result.sharedAdditional[DEF.HTTP_SHARED_CTX_USER] = userCached;
-                    result.sharedAdditional[DEF.HTTP_SHARED_CTX_SESSION_ID] = sessId;
+                    // result.sharedAdditional[DEF.HTTP_SHARED_CTX_SESSION_ID] = sessId;
                 } else {
                     const path = headers[H2.HTTP2_HEADER_PATH];
                     await loadUserData(sessId, path, result);

@@ -11,7 +11,7 @@ class Fl32_Ap_User_Defaults {
     // DI container labels for objects used by this plugin
     DI_SESSION = 'userSession';
 
-    HTTP_SHARED_CTX_SESSION_ID = 'user.sessionId';
+    // HTTP_SHARED_CTX_SESSION_ID = 'user.sessionId';
     HTTP_SHARED_CTX_USER = 'user.data';
 
     // DEF-objects of the dependencies.

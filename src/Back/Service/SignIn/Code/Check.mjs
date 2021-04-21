@@ -32,8 +32,8 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
             /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check.Response} */
             Response
         } = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check']; // ES6 module
-        /** @function {@type TeqFw_Http2_Back_Util.createCookie} */
-        const createCookie = spec['TeqFw_Http2_Back_Util#createCookie']; // function singleton
+        /** @function {@type TeqFw_Http2_Back_Util.cookieCreate} */
+        const cookieCreate = spec['TeqFw_Http2_Back_Util#cookieCreate']; // function singleton
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
         const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
         /** @function {@type Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp.process} */
@@ -112,7 +112,7 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
                     const sessionId = output.sessId;
                     // set session cookie
                     const realm = config.local.web.realmDef;
-                    const cookie = createCookie({
+                    const cookie = cookieCreate({
                         name: DEF.DATA_SESS_COOKIE_NAME,
                         value: sessionId,
                         expires: DEF.DATA_SESS_COOKIE_LIFETIME,
