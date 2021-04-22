@@ -11,6 +11,8 @@
 class Request {
     /** @type {String} */
     email;
+    /** @type {String} */
+    realm;
 }
 
 /**

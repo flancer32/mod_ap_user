@@ -11,6 +11,8 @@
 class Request {
     /** @type {String} */
     code;
+    /** @type {String} */
+    realm;
 }
 
 /**

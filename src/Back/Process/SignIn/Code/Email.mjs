@@ -27,14 +27,14 @@ function Factory(spec) {
      * Email sign-in code to user.
      *
      * @param {String} to
+     * @param {String} realm
      * @param {String} code
      * @returns {Promise<boolean>}
      * @memberOf Fl32_Ap_User_Back_Process_SignIn_Code_Email
      */
-    async function process({to, code}) {
+    async function process({to, realm, code}) {
         const urlBase = config.local.web.urlBase;
-        const realm = config.local.web.realmDef;
-        const route = DEF.REALM_DEF_ROUTE__signIn_codeCheck.replace(':code', code);
+        const route = DEF.REALM_DEF_ROUTE_signIn_codeCheck.replace(':code', code);
         const url = `https://${urlBase}/${realm}/#${route}`;
         const subject = '"Alus Pils" sign-in link';
         const text = `"Alus Pils" sign-in link: ${url}`;

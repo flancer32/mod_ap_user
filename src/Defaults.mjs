@@ -19,7 +19,7 @@ class Fl32_Ap_User_Defaults {
     MOD_CORE;
 
     // TODO: move it to plugin config
-    REALM_DEF_ROUTE__signIn_codeCheck = '/signIn/codeCheck/:code';
+    REALM_DEF_ROUTE_signIn_codeCheck = '/signIn/codeCheck/:code';
 
     // SERVICES ROUTES
     SERV_session_current = '/session/current';

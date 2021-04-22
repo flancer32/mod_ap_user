@@ -86,9 +86,10 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Send {
                 const trx = await rdb.startTransaction();
                 try {
                     const email = apiReq.email;
+                    const realm = apiReq.realm;
                     await procCleanUp({trx});
                     const code = await procCreate({trx, email});
-                    if (code !== null) response.isSent = await procEmail({to: email, code});
+                    if (code !== null) response.isSent = await procEmail({to: email, realm, code});
                     await trx.commit();
                 } catch (error) {
                     await trx.rollback();

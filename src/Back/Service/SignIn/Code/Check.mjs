@@ -104,14 +104,14 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
                 /**
                  * @param trx
                  * @param {Number} userId
+                 * @param {String} realm
                  * @returns {Promise<{cookie: *, sessionId: string}>}
                  */
-                async function initSession(trx, userId) {
+                async function initSession(trx, userId, realm) {
                     // generate user session
                     const {output} = await procCreate({trx, userId});
                     const sessionId = output.sessId;
                     // set session cookie
-                    const realm = config.local.web.realmDef;
                     const cookie = cookieCreate({
                         name: DEF.DATA_SESS_COOKIE_NAME,
                         value: sessionId,
@@ -133,11 +133,12 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
                 const trx = await rdb.startTransaction();
                 try {
                     const code = apiReq.code;
+                    const realm = apiReq.realm;
                     await procCleanUp({trx}); // clean up expired codes before checking
                     const userId = await getUserIdByCode(trx, code);
                     if (userId !== null) {
                         await procRemove({trx, code});
-                        const {sessionId, cookie} = await initSession(trx, userId);
+                        const {sessionId, cookie} = await initSession(trx, userId, realm);
                         result.headers[H2.HTTP2_HEADER_SET_COOKIE] = cookie;
                         response.sessionId = sessionId;
                     }
