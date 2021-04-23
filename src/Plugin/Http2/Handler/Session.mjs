@@ -29,8 +29,8 @@ async function Factory(spec) {
     const cache = spec['Fl32_Ap_User_Back_Model_Cache_Session$']; // instance singleton
     /** @function {@type TeqFw_Http2_Back_Util.cookieClear} */
     const cookieClear = spec['TeqFw_Http2_Back_Util#cookieClear']; // function singleton
-    /** @type {TeqFw_Http2_Back_Realm_Registry} */
-    const regRealms = spec['TeqFw_Http2_Back_Realm_Registry$']; // instance singleton
+    /** @type {TeqFw_Http2_Back_Model_Realm_Registry} */
+    const regRealms = spec['TeqFw_Http2_Back_Model_Realm_Registry$']; // instance singleton
     /** @type {typeof TeqFw_Http2_Back_Server_Stream_Report} */
     const Report = spec['TeqFw_Http2_Back_Server_Stream#Report'];   // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */

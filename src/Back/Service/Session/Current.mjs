@@ -9,7 +9,7 @@ const NS = 'Fl32_Ap_User_Back_Service_Session_Current';
 
 /**
  * Service to get current user data for session established before.
- * @implements TeqFw_Http2_Api_Service_Factory
+ * @implements TeqFw_Http2_Api_Back_Service_Factory
  */
 class Fl32_Ap_User_Back_Service_Session_Current {
 

@@ -8,7 +8,7 @@ const NS = 'Fl32_Ap_User_Back_Service_SignIn_Code_Send';
 
 /**
  * Service to send one-time sign-in code to user email.
- * @implements TeqFw_Http2_Api_Service_Factory
+ * @implements TeqFw_Http2_Api_Back_Service_Factory
  */
 class Fl32_Ap_User_Back_Service_SignIn_Code_Send {
 

@@ -12,7 +12,7 @@ const NS = 'Fl32_Ap_User_Back_Service_SignIn_Code_Check';
 
 /**
  * Service to check one-time sign-in code and to initiate new session.
- * @implements TeqFw_Http2_Api_Service_Factory
+ * @implements TeqFw_Http2_Api_Back_Service_Factory
  */
 class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
 
