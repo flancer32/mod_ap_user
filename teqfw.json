@@ -19,7 +19,9 @@
     "services": [
       "Fl32_Ap_User_Back_Service_Session_Current$",
       "Fl32_Ap_User_Back_Service_SignIn_Code_Check$",
-      "Fl32_Ap_User_Back_Service_SignIn_Code_Send$"
+      "Fl32_Ap_User_Back_Service_SignIn_Code_Send$",
+      "Fl32_Ap_User_Back_Service_SignUp_Code_Check$",
+      "Fl32_Ap_User_Back_Service_SignUp_Code_Create$"
     ]
   }
 }

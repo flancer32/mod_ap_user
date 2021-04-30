@@ -55,20 +55,21 @@ async function Factory(spec) {
          * @returns {String|null}
          */
         function extractSessionId(headers) {
-            let result = null;
+            let cookieId, bearerId;
             if (headers[H2.HTTP2_HEADER_COOKIE]) {
                 const cookies = headers[H2.HTTP2_HEADER_COOKIE];
                 const name = DEF.DATA_SESS_COOKIE_NAME;
                 const value = cookies.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '';
                 if (value.length) {
                     // there is session cookie in HTTP request
-                    result = value;
+                    cookieId = value;
                 }
             } else if (headers[H2.HTTP2_HEADER_AUTHORIZATION]) {
                 const value = headers[H2.HTTP2_HEADER_AUTHORIZATION];
-                result = value.replace('Bearer ', '').trim();
+                bearerId = value.replace('Bearer ', '').trim();
             }
-            return result;
+            // prefer to use ID from bearer then from cookie
+            return bearerId || cookieId || null;
         }
 
         /**
@@ -133,17 +134,17 @@ async function Factory(spec) {
                     const addr = regRealms.parseAddress(path);
                     const realm = addr.realm ?? '';
                     result.headers[H2.HTTP2_HEADER_SET_COOKIE] = cookieClear({name: DEF.DATA_SESS_COOKIE_NAME, realm});
-                    result.headers[H2.HTTP2_HEADER_STATUS] = H2.HTTP_STATUS_UNAUTHORIZED;
-                    result.output = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Please, sign in.</title>
-    <meta http-equiv="refresh" content="0; URL=/"/>
-</head>
-</html>                  
-`;
-                    result.complete = true;
+                    // result.headers[H2.HTTP2_HEADER_STATUS] = H2.HTTP_STATUS_UNAUTHORIZED;
+//                     result.output = `
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <title>Please, sign in.</title>
+//     <meta http-equiv="refresh" content="0; URL=/"/>
+// </head>
+// </html>
+// `;
+//                     result.complete = true;
                     cache.delete(sessId);
                 }
                 await trx.commit();
@@ -166,12 +167,23 @@ async function Factory(spec) {
                     result.sharedAdditional[DEF.HTTP_SHARED_CTX_USER] = userCached;
                     // result.sharedAdditional[DEF.HTTP_SHARED_CTX_SESSION_ID] = sessId;
                 } else {
-                    const path = headers[H2.HTTP2_HEADER_PATH];
-                    await loadUserData(sessId, path, result);
+                    await loadUserData(sessId, headers[H2.HTTP2_HEADER_PATH], result);
                 }
             }
         } catch (e) {
+            const addr = regRealms.parseAddress(headers[H2.HTTP2_HEADER_PATH]);
+            const realm = addr.realm ?? '';
             result.headers[H2.HTTP2_HEADER_STATUS] = H2.HTTP_STATUS_UNAUTHORIZED;
+            result.output = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Please, sign in.</title>
+    <meta http-equiv="refresh" content="2; URL=/${realm}"/>
+</head>
+<body>Error: ${e.message}</body>
+</html>                  
+`;
             result.complete = true;
         }
         return result;

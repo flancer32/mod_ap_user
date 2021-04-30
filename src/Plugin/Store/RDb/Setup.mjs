@@ -112,6 +112,8 @@ class Fl32_Ap_User_Plugin_Store_RDb_Setup {
                         .comment('One-time code to sign-up new user under this user.');
                     table.integer(ESignup.A_USER_REF).unsigned().notNullable()
                         .comment('ID of the referral user.');
+                    table.boolean(ESignup.A_ONETIME).notNullable().defaultTo(true)
+                        .comment('onetime acceptance or multiple.');
                     table.dateTime(ESignup.A_DATE_EXPIRED).notNullable()
                         .comment('Date-time for sign-up code expiration.');
                     table.foreign(ESignup.A_USER_REF).references(EUser.A_ID).inTable(EUser.ENTITY)

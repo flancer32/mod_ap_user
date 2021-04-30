@@ -1,5 +1,5 @@
 /**
- * Create one-time sign in code with limited lifetime.
+ * Create one-time sign-in code with limited lifetime.
  *
  * @namespace Fl32_Ap_User_Back_Process_SignIn_Code_Create
  */
@@ -8,8 +8,6 @@ import $crypto from 'crypto';
 
 // MODULE'S VARS
 const NS = 'Fl32_Ap_User_Back_Process_SignIn_Code_Create';
-const CODE_LENGTH = 16;
-const LIFETIME_MIN = 5;
 
 // MODULE'S FUNCTIONS
 /**
@@ -20,13 +18,15 @@ const LIFETIME_MIN = 5;
  * @memberOf Fl32_Ap_User_Back_Process_SignIn_Code_Create
  */
 function Factory(spec) {
+    /** @type {Fl32_Ap_User_Defaults} */
+    const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
     const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
     const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
 
     /**
-     * Create one-time sign in code with limited lifetime.
+     * Create one-time sign-in code with limited lifetime.
      * @param trx
      * @param {String} email
      * @returns {Promise<String>}
@@ -41,7 +41,7 @@ function Factory(spec) {
         async function generateCode(trx) {
             let code, rs;
             do {
-                code = $crypto.randomBytes(CODE_LENGTH).toString('hex').toLowerCase();
+                code = $crypto.randomBytes(DEF.DATA_SIGN_CODE_LENGTH).toString('hex').toLowerCase();
                 const query = trx.from(ESignIn.ENTITY);
                 rs = await query.select().where(ESignIn.A_CODE, code);
             } while (rs.length > 0);
@@ -75,7 +75,7 @@ function Factory(spec) {
         if (userId !== null) {
             result = await generateCode(trx);
             const dateExp = new Date();
-            dateExp.setUTCMinutes(dateExp.getUTCMinutes() + LIFETIME_MIN);
+            dateExp.setUTCMinutes(dateExp.getUTCMinutes() + DEF.DATA_SIGN_CODE_LIFETIME_MIN);
             await trx(ESignIn.ENTITY)
                 .insert({
                     [ESignIn.A_USER_REF]: userId,

@@ -21,6 +21,8 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_User_Defaults} */
     const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
+    /** @function {@type TeqFw_Http2_Back_Util.cookieCreate} */
+    const cookieCreate = spec['TeqFw_Http2_Back_Util#cookieCreate']; // function singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
     const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#']; // class
 
@@ -28,11 +30,12 @@ function Factory(spec) {
      * Create new user session.
      *
      * @param trx
-     * @param {String} userId
+     * @param {string} userId
+     * @param {string} realm
      * @returns {Promise<{output: {sessId: string}, error: {}}>}
      * @memberOf Fl32_Ap_User_Back_Process_Session_Create
      */
-    async function process({trx, userId}) {
+    async function process({trx, userId, realm}) {
         // DEFINE INNER FUNCTIONS
         async function getSessionById(trx, sessId) {
             const query = trx.from(ESession.ENTITY);
@@ -58,8 +61,15 @@ function Factory(spec) {
         } while (found);
         await createSession(trx, userId, sessionId);
 
+        // set session cookie
+        const cookie = cookieCreate({
+            name: DEF.DATA_SESS_COOKIE_NAME,
+            value: sessionId,
+            expires: DEF.DATA_SESS_COOKIE_LIFETIME,
+            path: `/${realm}`
+        });
         // COMPOSE RESULT
-        return {output: {sessId: sessionId}, error: {}};
+        return {sessionId, cookie};
     }
 
     Object.defineProperty(process, 'name', {value: `${NS}.${process.name}`});

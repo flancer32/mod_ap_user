@@ -7,6 +7,8 @@ class Fl32_Ap_User_Defaults {
     DATA_SESS_COOKIE_LIFETIME = 31536000000;  // 3600 * 24 * 365 * 1000
     DATA_SESS_COOKIE_NAME = 'TEQ_SESSION_ID';
     DATA_SESS_ID_BYTES = 20;  // Number of bytes for generated session ID.
+    DATA_SIGN_CODE_LENGTH = 16; // default length for sign-up & sign-in codes
+    DATA_SIGN_CODE_LIFETIME_MIN = 5; // default lifetime in minutes for sign-up & sign-in codes
 
     // DI container labels for objects used by this plugin
     DI_SESSION = 'userSession';
@@ -25,6 +27,8 @@ class Fl32_Ap_User_Defaults {
     SERV_session_current = '/session/current';
     SERV_signIn_code_check = '/signIn/code/check';
     SERV_signIn_code_send = '/signIn/code/send';
+    SERV_signUp_code_check = '/signUp/code/check';
+    SERV_signUp_code_create = '/signUp/code/create';
 
     constructor(spec) {
         this.MOD_CORE = spec['TeqFw_Core_App_Defaults$']; // instance singleton

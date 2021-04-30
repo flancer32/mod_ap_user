@@ -19,7 +19,7 @@ function Factory(spec) {
     const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
 
     /**
-     * Clean up expired one-time sign in codes.
+     * Clean up expired sign-in codes.
      *
      * @param trx
      * @returns {Promise<void>}
