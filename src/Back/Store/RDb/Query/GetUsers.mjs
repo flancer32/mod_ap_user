@@ -27,7 +27,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_User_Back_Store_RDb_Query_GetUsers
      */
     function queryBuilder(trx) {
-        
+
         const T_T = 't';
         const T_U = 'u';
 
@@ -36,6 +36,7 @@ function Factory(spec) {
         query.select([
             {[User.A_ID]: `${T_U}.${EUser.A_ID}`},
             {[User.A_NAME]: `${T_U}.${EUser.A_NAME}`},
+            {[User.A_IS_ADMIN]: `${T_U}.${EUser.A_IS_ADMIN}`},
             {[User.A_DATE_CREATED]: `${T_U}.${EUser.A_DATE_CREATED}`},
         ]);
         query.leftOuterJoin(

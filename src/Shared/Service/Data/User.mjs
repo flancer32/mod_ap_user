@@ -16,6 +16,8 @@ class Fl32_Ap_User_Shared_Service_Data_User {
      * @type {Number}
      */
     id
+    /** @type {boolean} */
+    isAdmin
     /** @type {String} */
     name
     /**
@@ -39,6 +41,7 @@ Fl32_Ap_User_Shared_Service_Data_User.A_DATE_CREATED = 'dateCreated';
 Fl32_Ap_User_Shared_Service_Data_User.A_DATE_LOGGED_IN = 'dateLoggedIn';
 Fl32_Ap_User_Shared_Service_Data_User.A_EMAILS = 'emails';
 Fl32_Ap_User_Shared_Service_Data_User.A_ID = 'id';
+Fl32_Ap_User_Shared_Service_Data_User.A_IS_ADMIN = 'isAdmin';
 Fl32_Ap_User_Shared_Service_Data_User.A_NAME = 'name';
 Fl32_Ap_User_Shared_Service_Data_User.A_PARENT_ID = 'parentId';
 Fl32_Ap_User_Shared_Service_Data_User.A_PARENT_NAME = 'parentName';

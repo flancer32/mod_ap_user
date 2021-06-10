@@ -145,6 +145,8 @@ class Fl32_Ap_User_Plugin_Store_RDb_Setup {
                     table.increments(EUser.A_ID);
                     table.dateTime(EUser.A_DATE_CREATED).notNullable().defaultTo(knex.fn.now())
                         .comment('Date-time for registration of the user.');
+                    table.boolean(EUser.A_IS_ADMIN).notNullable().defaultTo(false)
+                        .comment('Does user has an admin role.');
                     table.string(EUser.A_NAME).notNullable()
                         .comment('Name to display.');
                     table.comment('User registry.');
