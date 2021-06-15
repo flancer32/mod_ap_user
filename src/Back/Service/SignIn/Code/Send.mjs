@@ -26,11 +26,11 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Send {
             /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Response} */
             Response
         } = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send']; // ES6 module
-        /** @function {@type Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp.process} */
         const procCleanUp = spec['Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp$']; // function singleton
-        /** @function {@type Fl32_Ap_User_Back_Process_SignIn_Code_Create.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignIn_Code_Create.process} */
         const procCreate = spec['Fl32_Ap_User_Back_Process_SignIn_Code_Create$']; // function singleton
-        /** @function {@type Fl32_Ap_User_Back_Process_SignIn_Code_Email.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignIn_Code_Email.process} */
         const procEmail = spec['Fl32_Ap_User_Back_Process_SignIn_Code_Email$']; // function singleton
 
         // DEFINE INSTANCE METHODS

@@ -20,7 +20,7 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
     /** @type {TeqFw_Core_App_Front_Data_Config} */
     const config = spec[DEF.MOD_CORE.DI_CONFIG]; // named singleton
-    /** @function {@type TeqFw_Email_Back_Process_Email.process} */
+    /** @type {Function|TeqFw_Email_Back_Process_Email.process} */
     const procEmail = spec['TeqFw_Email_Back_Process_Email$']; // function singleton
 
     /**

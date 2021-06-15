@@ -32,15 +32,15 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
             /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check.Response} */
             Response
         } = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check']; // ES6 module
-        /** @function {@type TeqFw_Http2_Back_Util.cookieCreate} */
+        /** @type {Function|TeqFw_Http2_Back_Util.cookieCreate} */
         const cookieCreate = spec['TeqFw_Http2_Back_Util#cookieCreate']; // function singleton
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
         const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
-        /** @function {@type Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp.process} */
         const procCleanUp = spec['Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp$']; // function singleton
-        /** @function {@type Fl32_Ap_User_Back_Process_Session_Create.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_Session_Create.process} */
         const procCreate = spec['Fl32_Ap_User_Back_Process_Session_Create$']; // function singleton
-        /** @function {@type Fl32_Ap_User_Back_Process_SignIn_Code_Remove.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignIn_Code_Remove.process} */
         const procRemove = spec['Fl32_Ap_User_Back_Process_SignIn_Code_Remove$']; // function singleton
 
         // DEFINE INSTANCE METHODS

@@ -21,7 +21,7 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_User_Defaults} */
     const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
-    /** @function {@type TeqFw_Http2_Back_Util.cookieCreate} */
+    /** @type {Function|TeqFw_Http2_Back_Util.cookieCreate} */
     const cookieCreate = spec['TeqFw_Http2_Back_Util#cookieCreate']; // function singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
     const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#']; // class

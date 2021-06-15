@@ -27,7 +27,7 @@ async function Factory(spec) {
     const rdb = spec['TeqFw_Core_App_Db_Connector$']; // instance singleton
     /** @type {Fl32_Ap_User_Back_Model_Cache_Session} */
     const cache = spec['Fl32_Ap_User_Back_Model_Cache_Session$']; // instance singleton
-    /** @function {@type TeqFw_Http2_Back_Util.cookieClear} */
+    /** @type {Function|TeqFw_Http2_Back_Util.cookieClear} */
     const cookieClear = spec['TeqFw_Http2_Back_Util#cookieClear']; // function singleton
     /** @type {TeqFw_Http2_Back_Model_Realm_Registry} */
     const regRealms = spec['TeqFw_Http2_Back_Model_Realm_Registry$']; // instance singleton
@@ -35,7 +35,7 @@ async function Factory(spec) {
     const Report = spec['TeqFw_Http2_Back_Server_Stream#Report'];   // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
     const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#'];   // class
-    /** @function {@type Fl32_Ap_User_Back_Process_User_Load.process} */
+    /** @type {Function|Fl32_Ap_User_Back_Process_User_Load.process} */
     const procLoad = spec['Fl32_Ap_User_Back_Process_User_Load$']; // function singleton
 
     // PARSE INPUT & DEFINE WORKING VARS

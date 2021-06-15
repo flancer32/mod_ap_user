@@ -33,7 +33,7 @@ class Fl32_Ap_User_Back_Service_SignUp_Code_Create {
             /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create.Response} */
             Response
         } = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create']; // ES6 module
-        /** @function {@type Fl32_Ap_User_Back_Process_SignUp_Code_Create.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignUp_Code_Create.process} */
         const procCreate = spec['Fl32_Ap_User_Back_Process_SignUp_Code_Create$']; // function singleton
 
         // DEFINE INSTANCE METHODS

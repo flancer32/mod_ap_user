@@ -34,13 +34,13 @@ class Fl32_Ap_User_Back_Service_SignUp_Code_Check {
             /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Response} */
             Response
         } = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check']; // ES6 module
-        /** @function {@type Fl32_Ap_User_Back_Process_SignUp_Code_CleanUp.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignUp_Code_CleanUp.process} */
         const procCleanUpExpired = spec['Fl32_Ap_User_Back_Process_SignUp_Code_CleanUp$']; // function singleton
-        /** @function {@type Fl32_Ap_User_Back_Process_SignUp_Code_Remove.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_SignUp_Code_Remove.process} */
         const procRemove = spec['Fl32_Ap_User_Back_Process_SignUp_Code_Remove$']; // function singleton
-        /** @function {@type Fl32_Ap_User_Back_Process_User_Create.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_User_Create.process} */
         const procUserCreate = spec['Fl32_Ap_User_Back_Process_User_Create$']; // function singleton
-        /** @function {@type Fl32_Ap_User_Back_Process_Session_Create.process} */
+        /** @type {Function|Fl32_Ap_User_Back_Process_Session_Create.process} */
         const procSessCreate = spec['Fl32_Ap_User_Back_Process_Session_Create$']; // function singleton
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signup} */
         const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#']; // class
