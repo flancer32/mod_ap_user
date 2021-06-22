@@ -3,10 +3,6 @@
  *
  * @namespace Fl32_Ap_User_Front_Model_Session
  */
-// MODULE'S VARS
-const NS = 'Fl32_Ap_User_Front_Model_Session';
-
-// MODULE'S CLASSES
 class Fl32_Ap_User_Front_Model_Session {
     constructor(spec) {
         /** @type {Fl32_Ap_User_Front_Gate_Session_Current.gate} */
@@ -61,7 +57,7 @@ class Fl32_Ap_User_Front_Model_Session {
         };
 
         /**
-         * Redirect to sign in route in user is not authenticated. Store current route before redirect.
+         * Redirect to sign in route if user is not authenticated. Store current route before redirect.
          * @returns {Boolean} 'true' if user is authenticated.
          */
         this.checkUserAuthenticated = async function (router) {
