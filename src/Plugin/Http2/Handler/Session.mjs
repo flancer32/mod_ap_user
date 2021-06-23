@@ -23,8 +23,8 @@ async function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_User_Defaults} */
     const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
-    /** @type {TeqFw_Core_Db_Connector} */
-    const rdb = spec['TeqFw_Core_Db_Connector$']; // instance singleton
+    /** @type {TeqFw_Core_Back_RDb_Connector} */
+    const rdb = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
     /** @type {Fl32_Ap_User_Back_Model_Cache_Session} */
     const cache = spec['Fl32_Ap_User_Back_Model_Cache_Session$']; // instance singleton
     /** @type {Function|TeqFw_Http2_Back_Util.cookieClear} */

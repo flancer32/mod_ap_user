@@ -15,8 +15,8 @@ describe('Fl32_Ap_User_Plugin_Store_RDb_Setup', () => {
         assert.strictEqual(setup.constructor.name, 'Fl32_Ap_User_Plugin_Store_RDb_Setup');
 
         // get database connector then execute the process
-        /** @type {TeqFw_Core_Db_Connector} */
-        const connector = await container.get('TeqFw_Core_Db_Connector$');  // singleton instance
+        /** @type {TeqFw_Core_Back_RDb_Connector} */
+        const connector = await container.get('TeqFw_Core_Back_RDb_Connector$');  // singleton instance
         const knex = await connector.getKnex();
         /** @type {SchemaBuilder} */
         const builder = connector.getSchemaBuilder();
