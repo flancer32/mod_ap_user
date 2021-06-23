@@ -17,7 +17,7 @@ class Fl32_Ap_User_Defaults {
     HTTP_SHARED_CTX_USER = 'user.data';
 
     // DEF-objects of the dependencies.
-    /** @type {TeqFw_Core_App_Defaults} */
+    /** @type {TeqFw_Core_Defaults} */
     MOD_CORE;
 
     // TODO: move it to plugin config
@@ -31,7 +31,7 @@ class Fl32_Ap_User_Defaults {
     SERV_signUp_code_create = '/signUp/code/create';
 
     constructor(spec) {
-        this.MOD_CORE = spec['TeqFw_Core_App_Defaults$']; // instance singleton
+        this.MOD_CORE = spec['TeqFw_Core_Defaults$']; // instance singleton
         Object.freeze(this);
     }
 }

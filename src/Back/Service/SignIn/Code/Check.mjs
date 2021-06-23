@@ -20,10 +20,8 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_User_Defaults} */
         const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
-        /** @type {TeqFw_Core_App_Front_Data_Config} */
-        const config = spec[DEF.MOD_CORE.DI_CONFIG]; // named singleton
-        /** @type {TeqFw_Core_App_Db_Connector} */
-        const rdb = spec['TeqFw_Core_App_Db_Connector$'];  // instance singleton
+        /** @type {TeqFw_Core_Db_Connector} */
+        const rdb = spec['TeqFw_Core_Db_Connector$'];  // instance singleton
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
         const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
         const {
@@ -32,8 +30,6 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
             /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check.Response} */
             Response
         } = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check']; // ES6 module
-        /** @type {Function|TeqFw_Http2_Back_Util.cookieCreate} */
-        const cookieCreate = spec['TeqFw_Http2_Back_Util#cookieCreate']; // function singleton
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
         const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
         /** @type {Function|Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp.process} */

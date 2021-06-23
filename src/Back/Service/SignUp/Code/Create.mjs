@@ -19,12 +19,12 @@ class Fl32_Ap_User_Back_Service_SignUp_Code_Create {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_User_Defaults} */
         const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
-        /** @type {TeqFw_Core_App_Db_Connector} */
-        const rdb = spec['TeqFw_Core_App_Db_Connector$'];  // instance singleton
+        /** @type {TeqFw_Core_Db_Connector} */
+        const rdb = spec['TeqFw_Core_Db_Connector$'];  // instance singleton
         const {
-            /** @type {TeqFw_Core_App_Shared_Util.formatDate} */
+            /** @type {TeqFw_Core_Shared_Util.formatDate} */
             formatDate
-        } = spec['TeqFw_Core_App_Shared_Util']; // ES6 module
+        } = spec['TeqFw_Core_Shared_Util']; // ES6 module
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
         const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
         const {
