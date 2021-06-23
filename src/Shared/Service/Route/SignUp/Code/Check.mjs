@@ -26,8 +26,8 @@ class Response {
 }
 
 // MODULE'S EXPORT
-Object.defineProperty(Request, 'name', {value: `${NS}.${Request.name}`});
-Object.defineProperty(Response, 'name', {value: `${NS}.${Response.name}`});
+Object.defineProperty(Request, 'name', {value: `${NS}.${Request.constructor.name}`});
+Object.defineProperty(Response, 'name', {value: `${NS}.${Response.constructor.name}`});
 export {
     Request,
     Response,
