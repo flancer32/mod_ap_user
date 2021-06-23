@@ -13,8 +13,8 @@ const NS = 'Fl32_Ap_User_Front_Gate_Session_Current';
 function Factory(spec) {
     /** @type {Fl32_Ap_User_Defaults} */
     const DEF = spec['Fl32_Ap_User_Defaults$'];    // instance singleton
-    /** @type {TeqFw_Core_App_Front_Gate_Connect} */
-    const backConnect = spec['TeqFw_Core_App_Front_Gate_Connect$']; // instance singleton
+    /** @type {TeqFw_Http2_Front_Gate_Connect} */
+    const backConnect = spec['TeqFw_Http2_Front_Gate_Connect$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Shared_Service_Route_Session_Current.Response} */
     const Response = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Response']; // class constructor
 
