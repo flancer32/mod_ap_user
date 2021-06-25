@@ -6,7 +6,7 @@
   "http2": {
     "handlers": [
       {
-        "depId": "Fl32_Ap_User_Plugin_Http2_Handler_Session$",
+        "factoryId": "Fl32_Ap_User_Plugin_Http2_Handler_Session",
         "before": [
           "TeqFw_Http2_Plugin_Handler_Service",
           "TeqFw_Http2_Plugin_Handler_Static"
