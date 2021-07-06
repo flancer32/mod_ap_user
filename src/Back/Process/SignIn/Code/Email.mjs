@@ -16,8 +16,8 @@ const NS = 'Fl32_Ap_User_Back_Process_SignIn_Code_Email';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_User_Defaults} */
-    const DEF = spec['Fl32_Ap_User_Defaults$']; // singleton
+    /** @type {Fl32_Ap_User_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // singleton
     /** @type {TeqFw_Core_Back_Config} */
     const config = spec['TeqFw_Core_Back_Config$']; // singleton
     /** @type {Function|TeqFw_Email_Back_Process_Email.process} */

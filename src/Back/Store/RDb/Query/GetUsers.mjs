@@ -34,16 +34,16 @@ function Factory(spec) {
         // select from user
         const query = trx.from({u: EUser.ENTITY});
         query.select([
-            {[User.A_ID]: `${T_U}.${EUser.A_ID}`},
-            {[User.A_NAME]: `${T_U}.${EUser.A_NAME}`},
-            {[User.A_IS_ADMIN]: `${T_U}.${EUser.A_IS_ADMIN}`},
-            {[User.A_DATE_CREATED]: `${T_U}.${EUser.A_DATE_CREATED}`},
+            {[User.ID]: `${T_U}.${EUser.A_ID}`},
+            {[User.NAME]: `${T_U}.${EUser.A_NAME}`},
+            {[User.IS_ADMIN]: `${T_U}.${EUser.A_IS_ADMIN}`},
+            {[User.DATE_CREATED]: `${T_U}.${EUser.A_DATE_CREATED}`},
         ]);
         query.leftOuterJoin(
             {[T_T]: ETree.ENTITY},
             `${T_T}.${ETree.A_USER_REF}`,
             `${T_U}.${EUser.A_ID}`);
-        query.select([{[User.A_PARENT_ID]: `${T_T}.${ETree.A_PARENT_REF}`}]);
+        query.select([{[User.PARENT_ID]: `${T_T}.${ETree.A_PARENT_REF}`}]);
 
         return query;
     }

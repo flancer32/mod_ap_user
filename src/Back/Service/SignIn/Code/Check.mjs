@@ -18,8 +18,8 @@ class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_User_Defaults} */
-        const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
+        /** @type {Fl32_Ap_User_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // instance singleton
         /** @type {TeqFw_Core_Back_RDb_Connector} */
         const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */

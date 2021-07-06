@@ -18,8 +18,8 @@ const NS = 'Fl32_Ap_User_Back_Process_SignUp_Code_Create';
  * @memberOf Fl32_Ap_User_Back_Process_SignUp_Code_Create
  */
 function Factory(spec) {
-    /** @type {Fl32_Ap_User_Defaults} */
-    const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
+    /** @type {Fl32_Ap_User_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signup} */
     const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#']; // class
 

@@ -18,8 +18,8 @@ const NS = 'Fl32_Ap_User_Back_Process_SignIn_Code_Create';
  * @memberOf Fl32_Ap_User_Back_Process_SignIn_Code_Create
  */
 function Factory(spec) {
-    /** @type {Fl32_Ap_User_Defaults} */
-    const DEF = spec['Fl32_Ap_User_Defaults$']; // instance singleton
+    /** @type {Fl32_Ap_User_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
     const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */

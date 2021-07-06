@@ -5,16 +5,22 @@
  */
 class Fl32_Ap_User_Front_Model_Session {
     constructor(spec) {
+        /** @type {TeqFw_Web_Front_Service_Gate} */
+        const gate = spec['TeqFw_Web_Front_Service_Gate$'];
+        /** @type {Fl32_Ap_User_Shared_Service_Route_Session_Current.Factory} */
+        const routeCur = spec['Namespace#Factory$'];
         /** @type {Fl32_Ap_User_Front_Gate_Session_Current.gate} */
-        const gateCurrent = spec['Fl32_Ap_User_Front_Gate_Session_Current$']; // function singleton
+        const gateCurrent = spec['Fl32_Ap_User_Front_Gate_Session_Current$'];
         // /** @type {Fl32_Teq_User_Front_Gate_Sign_Out.gate} */
-        // const gateSignOut = spec['Fl32_Teq_User_Front_Gate_Sign_Out$']; // function singleton
+        // const gateSignOut = spec['Fl32_Teq_User_Front_Gate_Sign_Out$'];
         /** @type {typeof Fl32_Ap_User_Shared_Service_Route_Session_Current.Request} */
-        const CurrentRequest = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Request']; // class
+        const CurrentRequest = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Request'];
         // /** @type {typeof Fl32_Teq_User_Shared_Service_Route_Sign_Out_Request} */
-        // const SignOutRequest = spec['Fl32_Teq_User_Shared_Service_Route_Sign_Out#Request']; // class
+        // const SignOutRequest = spec['Fl32_Teq_User_Shared_Service_Route_Sign_Out#Request'];
         /** @type {typeof Fl32_Ap_User_Shared_Service_Data_User} */
-        const DUser = spec['Fl32_Ap_User_Shared_Service_Data_User#']; // class
+        const DUser = spec['Fl32_Ap_User_Shared_Service_Data_User#'];
+        /** @type {Fl32_Ap_User_Shared_Service_Data_User.Factory} */
+        const fUser = spec['Fl32_Ap_User_Shared_Service_Data_User#Factory$'];
 
         /** @type {Fl32_Ap_User_Shared_Service_Data_User} */
         let user = null;
@@ -48,11 +54,11 @@ class Fl32_Ap_User_Front_Model_Session {
         };
 
         this.init = async function () {
-            const req = new CurrentRequest();
+            // noinspection JSValidateTypes
             /** @type {Fl32_Ap_User_Shared_Service_Route_Session_Current.Response} */
-            const res = await gateCurrent(req);
+            const res = await gate.send(routeCur.createReq(), routeCur);
             if (res.user) {
-                user = Object.assign(new DUser(), res.user);
+                user = res.user;
             }
         };
 
