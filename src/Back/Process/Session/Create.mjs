@@ -20,11 +20,11 @@ const NS = 'Fl32_Ap_User_Back_Process_Session_Create';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_User_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // instance singleton
+    const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
     /** @type {Function|TeqFw_Web_Back_Util.cookieCreate} */
-    const cookieCreate = spec['TeqFw_Web_Back_Util#cookieCreate']; // function singleton
+    const cookieCreate = spec['TeqFw_Web_Back_Util#cookieCreate'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
-    const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#']; // class
+    const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#'];
 
     /**
      * Create new user session.

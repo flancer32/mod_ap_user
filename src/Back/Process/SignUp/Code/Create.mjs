@@ -19,9 +19,9 @@ const NS = 'Fl32_Ap_User_Back_Process_SignUp_Code_Create';
  */
 function Factory(spec) {
     /** @type {Fl32_Ap_User_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // instance singleton
+    const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signup} */
-    const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#']; // class
+    const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#'];
 
     /**
      * Create one-time sign in code with limited lifetime.

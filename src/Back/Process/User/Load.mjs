@@ -16,15 +16,15 @@ const NS = 'Fl32_Ap_User_Back_Process_User_Load';
  */
 function Factory(spec) {
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
-    const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
+    const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone} */
-    const EIdPhone = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone#']; // class
+    const EIdPhone = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
     /** @type {Function|Fl32_Ap_User_Back_Store_RDb_Query_GetUsers.queryBuilder}*/
-    const qbGetUsers = spec['Fl32_Ap_User_Back_Store_RDb_Query_GetUsers$']; // instance singleton
+    const qbGetUsers = spec['Fl32_Ap_User_Back_Store_RDb_Query_GetUsers$'];
     /** @type {typeof Fl32_Ap_User_Shared_Service_Data_User} */
-    const DUser = spec['Fl32_Ap_User_Shared_Service_Data_User#']; // class
+    const DUser = spec['Fl32_Ap_User_Shared_Service_Data_User#'];
 
     /**
      * Process to load user profile data.

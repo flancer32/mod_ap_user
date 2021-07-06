@@ -19,11 +19,11 @@ const NS = 'Fl32_Ap_User_Back_Process_SignIn_Code_Create';
  */
 function Factory(spec) {
     /** @type {Fl32_Ap_User_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // instance singleton
+    const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
-    const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
+    const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
-    const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
+    const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#'];
 
     /**
      * Create one-time sign-in code with limited lifetime.

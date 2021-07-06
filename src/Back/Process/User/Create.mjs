@@ -17,9 +17,9 @@ const NS = 'Fl32_Ap_User_Back_Process_User_Create';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Tree} */
-    const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#']; // class
+    const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#'];
 
     // DEFINE INNER FUNCTIONS
     /**

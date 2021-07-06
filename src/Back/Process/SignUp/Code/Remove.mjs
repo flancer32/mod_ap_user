@@ -16,7 +16,7 @@ const NS = 'Fl32_Ap_User_Back_Process_SignUp_Code_Remove';
  */
 function Factory(spec) {
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signup} */
-    const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#']; // class
+    const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#'];
 
     /**
      * @param trx

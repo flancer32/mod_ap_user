@@ -16,7 +16,7 @@ const NS = 'Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp';
  */
 function Factory(spec) {
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
-    const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
+    const ESignIn = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#'];
 
     /**
      * Clean up expired sign-in codes.

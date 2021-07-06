@@ -21,7 +21,7 @@ function Factory(spec) {
     /** @type {TeqFw_Core_Back_Config} */
     const config = spec['TeqFw_Core_Back_Config$']; // singleton
     /** @type {Function|TeqFw_Email_Back_Process_Email.process} */
-    const procEmail = spec['TeqFw_Email_Back_Process_Email$']; // function singleton
+    const procEmail = spec['TeqFw_Email_Back_Process_Email$'];
 
     /**
      * Email sign-in code to user.

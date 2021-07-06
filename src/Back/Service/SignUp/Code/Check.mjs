@@ -11,79 +11,40 @@ import {constants as H2} from 'http2';
 const NS = 'Fl32_Ap_User_Back_Service_SignUp_Code_Check';
 
 /**
- * Check sign-up code and create new user.
- * @implements TeqFw_Http2_Api_Back_Service_Factory
+ * @implements TeqFw_Web_Back_Api_Service_IFactory
  */
-class Fl32_Ap_User_Back_Service_SignUp_Code_Check {
+export default class Fl32_Ap_User_Back_Service_SignUp_Code_Check {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_User_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // instance singleton
         /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
-        const {
-            /** @type {TeqFw_Core_Shared_Util.formatDate} */
-            formatDate
-        } = spec['TeqFw_Core_Shared_Util']; // ES6 module
-        /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
-        const {
-            /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Request} */
-            Request,
-            /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Response} */
-            Response
-        } = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check']; // ES6 module
+        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
+        /** @type {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Factory} */
+        const route = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check#Factory$'];
         /** @type {Function|Fl32_Ap_User_Back_Process_SignUp_Code_CleanUp.process} */
-        const procCleanUpExpired = spec['Fl32_Ap_User_Back_Process_SignUp_Code_CleanUp$']; // function singleton
+        const procCleanUpExpired = spec['Fl32_Ap_User_Back_Process_SignUp_Code_CleanUp$'];
         /** @type {Function|Fl32_Ap_User_Back_Process_SignUp_Code_Remove.process} */
-        const procRemove = spec['Fl32_Ap_User_Back_Process_SignUp_Code_Remove$']; // function singleton
+        const procRemove = spec['Fl32_Ap_User_Back_Process_SignUp_Code_Remove$'];
         /** @type {Function|Fl32_Ap_User_Back_Process_User_Create.process} */
-        const procUserCreate = spec['Fl32_Ap_User_Back_Process_User_Create$']; // function singleton
+        const procUserCreate = spec['Fl32_Ap_User_Back_Process_User_Create$'];
         /** @type {Function|Fl32_Ap_User_Back_Process_Session_Create.process} */
-        const procSessCreate = spec['Fl32_Ap_User_Back_Process_Session_Create$']; // function singleton
+        const procSessCreate = spec['Fl32_Ap_User_Back_Process_Session_Create$'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signup} */
-        const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#']; // class
+        const ESignUp = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#'];
 
         // DEFINE INSTANCE METHODS
 
-        this.getRoute = () => DEF.SERV_signUp_code_check;
+        this.getRouteFactory = () => route;
 
-        /**
-         * Factory to create function to validate and structure incoming data.
-         * @returns {function(TeqFw_Http2_Back_Server_Stream_Context): Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Request}
-         */
-        this.createInputParser = function () {
+        this.getService = function () {
             // DEFINE INNER FUNCTIONS
             /**
-             * @param {TeqFw_Http2_Back_Server_Stream_Context} context
-             * @returns {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Request}
-             * @memberOf Fl32_Ap_User_Back_Service_SignUp_Code_Check
+             * @param {TeqFw_Web_Back_Api_Service_IContext} context
+             * @return Promise<void>
              */
-            function parse(context) {
-                const body = JSON.parse(context.body);
-                // clone HTTP body into API request object
-                return Object.assign(new Request(), body.data);
-            }
-
-            // COMPOSE RESULT
-            Object.defineProperty(parse, 'name', {value: `${NS}.${parse.name}`});
-            return parse;
-        };
-
-        /**
-         * Factory to create service (handler to process HTTP API request).
-         * @returns {function(TeqFw_Http2_Plugin_Handler_Service.Context): TeqFw_Http2_Plugin_Handler_Service.Result}
-         */
-        this.createService = function () {
-            // DEFINE INNER FUNCTIONS
-            /**
-             * @param {TeqFw_Http2_Plugin_Handler_Service.Context} apiCtx
-             * @returns {Promise<TeqFw_Http2_Plugin_Handler_Service.Result>}
-             * @memberOf Fl32_Ap_User_Back_Service_SignUp_Code_Check
-             */
-            async function service(apiCtx) {
+            async function service(context) {
                 // DEFINE INNER FUNCTIONS
+
                 /**
                  * @param trx
                  * @param {String} code
@@ -104,41 +65,34 @@ class Fl32_Ap_User_Back_Service_SignUp_Code_Check {
                 }
 
                 // MAIN FUNCTIONALITY
-                const result = new ApiResult();
-                const response = new Response();
-                result.response = response;
                 /** @type {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Request} */
-                const apiReq = apiCtx.request;
-                const shared = apiCtx.sharedContext;
-                // don't start transaction if not required
+                const req = context.getInData();
+                /** @type {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Response} */
+                const res = context.getOutData();
+                //
                 const trx = await rdb.startTransaction();
                 try {
-                    const code = apiReq.code;
-                    const realm = apiReq.realm;
+                    const code = req.code;
+                    const realm = req.door;
                     await procCleanUpExpired({trx});
                     const parentId = await getParentIdByCode(trx, code);
                     if (parentId !== null) {
                         await procRemove({trx, code});
                         const {userId} = await procUserCreate({trx, parentId});
                         const {sessionId, cookie} = await procSessCreate({trx, userId, realm});
-                        result.headers[H2.HTTP2_HEADER_SET_COOKIE] = cookie;
-                        response.sessionId = sessionId;
+                        context.setOutHeader(H2.HTTP2_HEADER_SET_COOKIE, cookie);
+                        res.sessionId = sessionId;
                     }
                     await trx.commit();
                 } catch (error) {
                     await trx.rollback();
                     throw error;
                 }
-                return result;
             }
 
-            // COMPOSE RESULT
+            // MAIN FUNCTIONALITY
             Object.defineProperty(service, 'name', {value: `${NS}.${service.name}`});
             return service;
-        };
+        }
     }
-
-    // DEFINE PROTO METHODS
 }
-
-export default Fl32_Ap_User_Back_Service_SignUp_Code_Check;

@@ -14,11 +14,11 @@ const NS = 'Fl32_Ap_User_Back_Store_RDb_Query_GetUsers';
  */
 function Factory(spec) {
     /** @type {typeof Fl32_Ap_User_Shared_Service_Data_User} */
-    const User = spec['Fl32_Ap_User_Shared_Service_Data_User#']; // class
+    const User = spec['Fl32_Ap_User_Shared_Service_Data_User#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Tree} */
-    const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#']; // class
+    const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
 
     // DEFINE INNER FUNCTIONS
     /**

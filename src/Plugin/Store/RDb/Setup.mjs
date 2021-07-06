@@ -10,19 +10,19 @@ class Fl32_Ap_User_Plugin_Store_RDb_Setup {
         } = spec['TeqFw_Core_Back_Util_RDb']; // ES6 module destructing
 
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
-        const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
+        const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone} */
-        const EIdPhone = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone#']; // class
+        const EIdPhone = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
-        const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#']; // class
+        const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
-        const ESessionInit = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
+        const ESessionInit = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signup} */
-        const ESignup = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#']; // class
+        const ESignup = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Tree} */
-        const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#']; // class
+        const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
 
 
         /**

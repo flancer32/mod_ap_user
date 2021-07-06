@@ -16,13 +16,8 @@ export default class Fl32_Ap_User_Back_Service_Session_Current {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_User_Back_Defaults} */
         const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
-        /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
-        /** @type {typeof Fl32_Ap_User_Shared_Service_Route_Session_Current.Response} */
-        const Response = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Response'];
         /** @type {Fl32_Ap_User_Shared_Service_Route_Session_Current.Factory} */
         const route = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Factory$'];
-
 
         // DEFINE INSTANCE METHODS
 
@@ -35,8 +30,6 @@ export default class Fl32_Ap_User_Back_Service_Session_Current {
              * @return Promise<void>
              */
             async function service(context) {
-                // DEFINE INNER FUNCTIONS
-
                 // MAIN FUNCTIONALITY
                 /** @type {Fl32_Ap_User_Shared_Service_Route_Session_Current.Request} */
                 // const req = context.getInData();
