@@ -48,7 +48,9 @@ export default class Factory {
              * @memberOf Fl32_Ap_User_Plugin_Web_Handler_Session
              */
             async function handle(context) {
+
                 // DEFINE INNER FUNCTIONS
+
                 /**
                  * Extract session ID from cookies or HTTP headers.
                  * @param {Object<String, String>} headers

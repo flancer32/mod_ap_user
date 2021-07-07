@@ -8,19 +8,13 @@ class Fl32_Ap_User_Front_Model_Session {
         /** @type {TeqFw_Web_Front_Service_Gate} */
         const gate = spec['TeqFw_Web_Front_Service_Gate$'];
         /** @type {Fl32_Ap_User_Shared_Service_Route_Session_Current.Factory} */
-        const routeCur = spec['Namespace#Factory$'];
-        /** @type {Fl32_Ap_User_Front_Gate_Session_Current.gate} */
-        const gateCurrent = spec['Fl32_Ap_User_Front_Gate_Session_Current$'];
+        const routeCur = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Factory$'];
         // /** @type {Fl32_Teq_User_Front_Gate_Sign_Out.gate} */
         // const gateSignOut = spec['Fl32_Teq_User_Front_Gate_Sign_Out$'];
-        /** @type {typeof Fl32_Ap_User_Shared_Service_Route_Session_Current.Request} */
-        const CurrentRequest = spec['Fl32_Ap_User_Shared_Service_Route_Session_Current#Request'];
         // /** @type {typeof Fl32_Teq_User_Shared_Service_Route_Sign_Out_Request} */
         // const SignOutRequest = spec['Fl32_Teq_User_Shared_Service_Route_Sign_Out#Request'];
         /** @type {typeof Fl32_Ap_User_Shared_Service_Data_User} */
         const DUser = spec['Fl32_Ap_User_Shared_Service_Data_User#'];
-        /** @type {Fl32_Ap_User_Shared_Service_Data_User.Factory} */
-        const fUser = spec['Fl32_Ap_User_Shared_Service_Data_User#Factory$'];
 
         /** @type {Fl32_Ap_User_Shared_Service_Data_User} */
         let user = null;
@@ -30,12 +24,12 @@ class Fl32_Ap_User_Front_Model_Session {
         let routeToSignIn = null;
 
         this.close = async function () {
-            const req = new SignOutRequest();
-            /** @type {Fl32_Teq_User_Shared_Service_Route_Sign_Out_Response} */
-            const res = await gateSignOut(req);
-            if (res) {
-                user = null;
-            }
+            // const req = new SignOutRequest();
+            // /** @type {Fl32_Teq_User_Shared_Service_Route_Sign_Out.Response} */
+            // const res = await gateSignOut(req);
+            // if (res) {
+            //     user = null;
+            // }
         };
 
         this.getRouteToRedirect = function () {
@@ -57,8 +51,10 @@ class Fl32_Ap_User_Front_Model_Session {
             // noinspection JSValidateTypes
             /** @type {Fl32_Ap_User_Shared_Service_Route_Session_Current.Response} */
             const res = await gate.send(routeCur.createReq(), routeCur);
-            if (res.user) {
+            if (res?.user && res.user.id) {
                 user = res.user;
+            } else {
+                user = null;
             }
         };
 
