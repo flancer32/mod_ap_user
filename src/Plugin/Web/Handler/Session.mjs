@@ -144,7 +144,7 @@ export default class Factory {
 <html lang="en">
 <head>
     <title>Please, sign in.</title>
-    <meta http-equiv="refresh" content="0; URL=/"/>
+    <meta http-equiv="refresh" content="0; URL=/${door}"/>
 </head>
 </html>
 `;
@@ -193,7 +193,7 @@ export default class Factory {
 <html lang="en">
 <head>
     <title>Please, sign in.</title>
-    <meta http-equiv="refresh" content="0; URL=/"/>
+    <meta http-equiv="refresh" content="0; URL=/${door}"/>
 </head>
 </html>
 `;
