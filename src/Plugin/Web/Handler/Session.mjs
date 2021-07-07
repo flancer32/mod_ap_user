@@ -131,27 +131,29 @@ export default class Factory {
                                 await cleanUpSessions(trx, userId, sessId);
                             }
                         } else {
-                            // clear session id from cookies
-                            const path = context.getPath();
-                            const addr = mAddr.parsePath(path);
-                            const door = addr.door ?? '';
-                            const name = DEF.DATA_SESS_COOKIE_NAME;
-                            const cookie = cookieClear({name, door});
-                            context.setResponseHeader(H2.HTTP2_HEADER_SET_COOKIE, cookie);
-                            context.setResponseHeader(DEF.MOD.WEB.HTTP.HEADER.STATUS, H2.HTTP_STATUS_UNAUTHORIZED.toString());
-                            const body = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Please, clean up session cookie and sign in.</title>
-    <meta http-equiv="refresh" content="3; URL=/${door}"/>
-</head>
-</html>
-`;
-                            context.setResponseBody(body);
-                            context.setResponseHeader(H2.HTTP2_HEADER_CONTENT_TYPE, 'text/html');
-                            context.markRequestProcessed();
-                            cache.delete(sessId);
+                            // do nothing
+
+//                             // clear session id from cookies
+//                             const path = context.getPath();
+//                             const addr = mAddr.parsePath(path);
+//                             const door = addr.door ?? '';
+//                             const name = DEF.DATA_SESS_COOKIE_NAME;
+//                             const cookie = cookieClear({name, door});
+//                             context.setResponseHeader(H2.HTTP2_HEADER_SET_COOKIE, cookie);
+//                             context.setResponseHeader(DEF.MOD_WEB.HTTP_HEADER_STATUS, H2.HTTP_STATUS_UNAUTHORIZED.toString());
+//                             const body = `
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <title>Please, clean up session cookie and sign in.</title>
+//     <meta http-equiv="refresh" content="3; URL=/${door}"/>
+// </head>
+// </html>
+// `;
+//                             context.setResponseBody(body);
+//                             context.setResponseHeader(H2.HTTP2_HEADER_CONTENT_TYPE, 'text/html');
+//                             context.markRequestProcessed();
+//                             cache.delete(sessId);
                         }
                         await trx.commit();
                     } catch (e) {
@@ -187,7 +189,7 @@ export default class Factory {
                         const name = DEF.DATA_SESS_COOKIE_NAME;
                         const cookie = cookieClear({name, door});
                         context.setResponseHeader(H2.HTTP2_HEADER_SET_COOKIE, cookie);
-                        context.setResponseHeader(DEF.MOD.WEB.HTTP.HEADER.STATUS, H2.HTTP_STATUS_UNAUTHORIZED.toString());
+                        context.setResponseHeader(DEF.MOD_WEB.HTTP_HEADER_STATUS, H2.HTTP_STATUS_UNAUTHORIZED.toString());
                         const body = `
 <!DOCTYPE html>
 <html lang="en">

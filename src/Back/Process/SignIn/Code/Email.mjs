@@ -34,7 +34,7 @@ function Factory(spec) {
      */
     async function process({to, realm, code}) {
         const urlBase = config.get()?.local.web.urlBase;
-        const route = DEF.REALM_DEF_ROUTE_signIn_codeCheck.replace(':code', code);
+        const route = DEF.DOOR_DEF_ROUTE_SIGNIN_CODE_CHECK.replace(':code', code);
         const url = `https://${urlBase}/${realm}/#${route}`;
         const subject = '"Alus Pils" sign-in link';
         const text = `"Alus Pils" sign-in link: ${url}`;

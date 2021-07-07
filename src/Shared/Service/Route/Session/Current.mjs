@@ -36,7 +36,7 @@ class Factory {
         const fUser = spec['Fl32_Ap_User_Shared_Service_Data_User#Factory$'];
 
         // DEFINE INSTANCE METHODS
-        this.getRoute = () => `/${DEF.NAME}${DEF.SERV_session_current}`;
+        this.getRoute = () => `/${DEF.NAME}${DEF.WEB_SESSION_CURRENT}`;
 
         /**
          * @param {Request|null} data

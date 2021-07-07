@@ -53,7 +53,7 @@ export default class Fl32_Ap_User_Back_Service_SignUp_Code_Create {
                         const dateExpired = req.dateExpired;
                         res.code = await procCreate({trx, userId, onetime, dateExpired});
                     } else {
-                        context.setOutHeader(DEF.MOD.WEB.HTTP.HEADER.STATUS, H2.HTTP_STATUS_UNAUTHORIZED);
+                        context.setOutHeader(DEF.MOD_WEB.HTTP_HEADER_STATUS, H2.HTTP_STATUS_UNAUTHORIZED);
                     }
                     await trx.commit();
                 } catch (error) {

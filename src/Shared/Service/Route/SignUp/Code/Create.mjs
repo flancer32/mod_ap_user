@@ -40,7 +40,7 @@ class Factory {
         const DEF = spec['Fl32_Ap_User_Shared_Defaults$'];
 
         // DEFINE INSTANCE METHODS
-        this.getRoute = () => `/${DEF.NAME}${DEF.SERV_signUp_code_create}`;
+        this.getRoute = () => `/${DEF.NAME}${DEF.WEB_SIGNUP_CODE_CREATE}`;
 
         /**
          * @param {Request|null} data
