@@ -10,7 +10,7 @@ const NS = 'Fl32_Ap_User_Back_Process_SignUp_Code_Remove';
 /**
  * Factory to setup execution context and to create the processor.
  *
- * @param {TeqFw_Di_SpecProxy} spec
+ * @param {TeqFw_Di_Shared_SpecProxy} spec
  * @constructs Fl32_Ap_User_Back_Process_SignUp_Code_Remove.process
  * @memberOf Fl32_Ap_User_Back_Process_SignUp_Code_Remove
  */

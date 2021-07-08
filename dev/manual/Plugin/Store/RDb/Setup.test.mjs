@@ -8,7 +8,7 @@ import devEnv from '../../../../../../../../dev/manual/DevEnv.mjs';
 describe('Fl32_Ap_User_Plugin_Store_RDb_Setup', () => {
 
     it('performs the duties', async () => {
-        /** @type {TeqFw_Di_Container} */
+        /** @type {TeqFw_Di_Shared_Container} */
         const container = await devEnv();
         /** @type {Fl32_Ap_User_Plugin_Store_RDb_Setup} */
         const setup = await container.get('Fl32_Ap_User_Plugin_Store_RDb_Setup$');
