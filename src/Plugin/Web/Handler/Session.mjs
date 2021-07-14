@@ -21,8 +21,8 @@ export default class Factory {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_User_Back_Defaults} */
         const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
-        /** @type {TeqFw_Core_Logger} */
-        const logger = spec['TeqFw_Core_Logger$'];
+        /** @type {TeqFw_Core_Shared_Logger} */
+        const logger = spec['TeqFw_Core_Shared_Logger$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
         const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
         /** @type {Fl32_Ap_User_Back_Model_Cache_Session} */
@@ -207,7 +207,7 @@ export default class Factory {
             }
 
             // MAIN FUNCTIONALITY
-            logger.debug(`Handler '${NS}' is initialized.`);
+            logger.info(`Handler '${NS}' is initialized.`);
 
             // COMPOSE RESULT
             Object.defineProperty(handle, 'name', {value: `${NS}.${handle.name}`});
