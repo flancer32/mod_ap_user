@@ -17,9 +17,9 @@ const NS = 'Fl32_Ap_User_Back_Process_SignIn_Code_Email';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_User_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_User_Back_Defaults$']; // singleton
+    const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
     /** @type {TeqFw_Core_Back_Config} */
-    const config = spec['TeqFw_Core_Back_Config$']; // singleton
+    const config = spec['TeqFw_Core_Back_Config$'];
     /** @type {Function|TeqFw_Email_Back_Process_Email.process} */
     const procEmail = spec['TeqFw_Email_Back_Process_Email$'];
 
@@ -33,7 +33,9 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_User_Back_Process_SignIn_Code_Email
      */
     async function process({to, realm, code}) {
-        const urlBase = config.get()?.local.web.urlBase;
+        /** @type {TeqFw_Web_Back_Api_Dto_Config} */
+        const cfg = config.getLocal(DEF.MOD_WEB.DESC_NODE);
+        const urlBase = cfg.urlBase;
         const route = DEF.DOOR_DEF_ROUTE_SIGNIN_CODE_CHECK.replace(':code', code);
         const url = `https://${urlBase}/${realm}/#${route}`;
         const subject = '"Alus Pils" sign-in link';
