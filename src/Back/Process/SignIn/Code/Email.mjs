@@ -33,7 +33,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_User_Back_Process_SignIn_Code_Email
      */
     async function process({to, realm, code}) {
-        /** @type {TeqFw_Web_Back_Api_Dto_Config} */
+        /** @type {TeqFw_Web_Back_Api_Dto_Config_Local} */
         const cfg = config.getLocal(DEF.MOD_WEB.DESC_NODE);
         const urlBase = cfg.urlBase;
         const route = DEF.DOOR_DEF_ROUTE_SIGNIN_CODE_CHECK.replace(':code', code);
