@@ -1,9 +1,7 @@
 /**
  * User session model for frontend.
- *
- * @namespace Fl32_Ap_User_Front_Model_Session
  */
-class Fl32_Ap_User_Front_Model_Session {
+export default class Fl32_Ap_User_Front_Model_Session {
     constructor(spec) {
         /** @type {TeqFw_Web_Front_Service_Gate} */
         const gate = spec['TeqFw_Web_Front_Service_Gate$'];
@@ -82,6 +80,3 @@ class Fl32_Ap_User_Front_Model_Session {
     }
 
 }
-
-// MODULE'S EXPORT
-export default Fl32_Ap_User_Front_Model_Session;
