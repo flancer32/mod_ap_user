@@ -1,13 +1,13 @@
 class Fl32_Ap_User_Plugin_Store_RDb_Setup {
     constructor(spec) {
         const {
-            /** @type {Function|TeqFw_Core_Back_Util_RDb.nameFK} */
+            /** @type {Function|TeqFw_Db_Back_Util.nameFK} */
             nameFK,
-            /** @type {Function|TeqFw_Core_Back_Util_RDb.nameNX} */
+            /** @type {Function|TeqFw_Db_Back_Util.nameNX} */
             nameNX,
-            /** @type {Function|TeqFw_Core_Back_Util_RDb.nameUQ} */
+            /** @type {Function|TeqFw_Db_Back_Util.nameUQ} */
             nameUQ
-        } = spec['TeqFw_Core_Back_Util_RDb']; // ES6 module destructing
+        } = spec['TeqFw_Db_Back_Util']; // ES6 module destructing
 
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
         const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#'];

@@ -13,8 +13,8 @@ export default class Fl32_Ap_User_Back_Service_SignIn_Code_Send {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
+        /** @type {TeqFw_Db_Back_RDb_Connect} */
+        const rdb = spec['TeqFw_Db_Back_RDb_Connect$'];
         /** @type {Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Factory} */
         const route = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send#Factory$'];
         /** @type {Function|Fl32_Ap_User_Back_Process_SignIn_Code_CleanUp.process} */

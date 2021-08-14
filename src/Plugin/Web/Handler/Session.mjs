@@ -23,8 +23,8 @@ export default class Factory {
         const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
         /** @type {TeqFw_Core_Shared_Logger} */
         const logger = spec['TeqFw_Core_Shared_Logger$'];
-        /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
+        /** @type {TeqFw_Db_Back_RDb_Connect} */
+        const rdb = spec['TeqFw_Db_Back_RDb_Connect$'];
         /** @type {Fl32_Ap_User_Back_Model_Cache_Session} */
         const cache = spec['Fl32_Ap_User_Back_Model_Cache_Session$'];
         /** @type {Function|TeqFw_Web_Back_Util.cookieClear} */

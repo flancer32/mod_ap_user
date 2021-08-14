@@ -18,8 +18,8 @@ export default class Fl32_Ap_User_Back_Service_SignUp_Code_Create {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_User_Back_Defaults} */
         const DEF = spec['Fl32_Ap_User_Back_Defaults$'];
-        /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
+        /** @type {TeqFw_Db_Back_RDb_Connect} */
+        const rdb = spec['TeqFw_Db_Back_RDb_Connect$'];
         /** @type {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create.Factory} */
         const route = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create#Factory$'];
         /** @type {Function|Fl32_Ap_User_Back_Process_SignUp_Code_Create.process} */

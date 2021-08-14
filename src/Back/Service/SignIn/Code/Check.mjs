@@ -17,8 +17,8 @@ export default class Fl32_Ap_User_Back_Service_SignIn_Code_Check {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
+        /** @type {TeqFw_Db_Back_RDb_Connect} */
+        const rdb = spec['TeqFw_Db_Back_RDb_Connect$'];
         /** @type {Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check.Factory} */
         const route = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check#Factory$'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
