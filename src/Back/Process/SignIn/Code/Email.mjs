@@ -34,7 +34,7 @@ function Factory(spec) {
      */
     async function process({to, realm, code}) {
         /** @type {TeqFw_Web_Back_Api_Dto_Config_Local} */
-        const cfg = config.getLocal(DEF.MOD_WEB.DESC_NODE);
+        const cfg = config.getLocal(DEF.MOD_WEB.SHARED.NAME);
         const urlBase = cfg.urlBase;
         const route = DEF.DOOR_DEF_ROUTE_SIGNIN_CODE_CHECK.replace(':code', code);
         const url = `https://${urlBase}/${realm}/#${route}`;

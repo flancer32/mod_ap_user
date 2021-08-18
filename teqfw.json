@@ -1,11 +1,11 @@
 {
-  "di": {
+  "@teqfw/di": {
     "autoload": {
       "ns": "Fl32_Ap_User",
       "path": "./src"
     }
   },
-  "web": {
+  "@teqfw/web": {
     "services": [
       "Fl32_Ap_User_Back_Service_Session_Current",
       "Fl32_Ap_User_Back_Service_SignIn_Code_Check",
