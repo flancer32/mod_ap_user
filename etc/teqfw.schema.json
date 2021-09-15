@@ -1,0 +1,165 @@
+{
+  "entity": {
+    "user": {
+      "comment": "User registry.",
+      "attr": {
+        "id": {"type": "id"},
+        "date_created": {
+          "comment": "Date-time for registration of the user.",
+          "type": "datetime",
+          "default": "current"
+        },
+        "is_admin": {"type": "boolean", "comment": "Does user has an admin role."},
+        "name": {"type": "string", "comment": "Name to display."}
+      }
+    }
+  },
+  "package": {
+    "user": {
+      "entity": {
+        "session": {
+          "comment": "Registry for opened sessions.",
+          "attr": {
+            "session_id": {"type": "string"},
+            "user_ref": {"type": "ref"},
+            "date_created": {
+              "comment": "Date-time for session registration.",
+              "type": "datetime",
+              "default": "current"
+            }
+          },
+          "index": {
+            "pk": {"type": "primary", "attrs": ["session_id"]}
+          },
+          "relation": {
+            "user": {
+              "attrs": ["user_ref"],
+              "ref": {
+                "path": "/user",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            }
+          }
+        },
+        "signin": {
+          "comment": "One-time sign-in codes with limited lifetime.",
+          "attr": {
+            "code": {"type": "string", "comment": "One-time code to initialize session."},
+            "user_ref": {"type": "ref"},
+            "date_expired": {"type": "datetime", "comment": "Date-time for sign-in code expiration."}
+          },
+          "index": {
+            "pk": {"type": "primary", "attrs": ["code"]}
+          },
+          "relation": {
+            "user": {
+              "attrs": ["user_ref"],
+              "ref": {
+                "path": "/user",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            }
+          }
+        },
+        "signup": {
+          "comment": "One-time sign-up codes with limited lifetime.",
+          "attr": {
+            "code": {"type": "string", "comment": "One-time code to initialize session."},
+            "user_ref": {"type": "ref", "comment": "ID of the referral user."},
+            "onetime": {"type": "boolean", "comment": "Onetime or multiple acceptance."},
+            "date_expired": {"type": "datetime", "comment": "Date-time for sign-up code expiration."}
+          },
+          "index": {
+            "pk": {"type": "primary", "attrs": ["code"]}
+          },
+          "relation": {
+            "user": {
+              "attrs": ["user_ref"],
+              "ref": {
+                "path": "/user",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            }
+          }
+        },
+        "tree": {
+          "comment": "Users relations (parent - child).",
+          "attr": {
+            "user_ref": {"type": "ref"},
+            "parent_ref": {"type": "ref"}
+          },
+          "index": {
+            "pk": {"type": "primary", "attrs": ["user_ref"]}
+          },
+          "relation": {
+            "user": {
+              "attrs": ["user_ref"],
+              "ref": {
+                "path": "/user",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            },
+            "parent": {
+              "attrs": ["parent_ref"],
+              "ref": {
+                "path": "/user/tree",
+                "attrs": ["user_ref"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            }
+          }
+        }
+      },
+      "package": {
+        "id": {
+          "entity": {
+            "email": {
+              "comment": "Emails as identifiers for users.",
+              "attr": {
+                "email": {"type": "string"},
+                "user_ref": {"type": "ref"}
+              },
+              "index": {
+                "pk": {"type": "primary", "attrs": ["email"]}
+              },
+              "relation": {
+                "user": {
+                  "attrs": ["user_ref"],
+                  "ref": {
+                    "path": "/user",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                }
+              }
+            },
+            "phone": {
+              "comment": "Phones as identifiers for users.",
+              "attr": {
+                "phone": {"type": "string"},
+                "user_ref": {"type": "ref"}
+              },
+              "index": {
+                "pk": {"type": "primary", "attrs": ["phone"]}
+              },
+              "relation": {
+                "user": {
+                  "attrs": ["user_ref"],
+                  "ref": {
+                    "path": "/user",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
